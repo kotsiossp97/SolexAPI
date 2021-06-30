@@ -10,21 +10,118 @@ servers:
 paths:
   /user.php:
     post:
-      summary: User account and details related queries.
+      summary: User account/ user details related queries.
       parameters:
-          -   in: query
-              name: op
-              required: true
-              schema:
-                  type: string
-                  enum:
-                      - email
-                      - name
-                      - surname
-                      - fullname
-                  description:
-                      - email - Returns the email of the requesting account.
-                      - name - Returns the name of the requesting account.
-        responses:
-            '200':
-                description: OK
+        - in: query
+          name: op
+          description: Operation code to be executed.
+          required: true
+          schema:
+              type: string
+              enum: 
+                - email
+                - name
+                - surname
+                - fullname
+        - in: query
+          name: access_token
+          required: true
+          schema:
+            type: string
+            description: Unique access token that can be obtain from the website.
+      responses:
+          'op = email':
+              description: Returns the email address of the requesting user.
+              content:
+                application/json:
+                  properties:
+                    
+              
+  /sensors.php:
+    post:
+      summary: Sensor related queries.
+      parameters:
+        - in: query
+          name: op
+          description: Operation code to be executed.
+          required: true
+          schema:
+              type: string
+              enum: 
+                - viewAll
+                - viewSensor
+                - search
+        - in: query
+          name: access_token
+          description: Unique access token that can be obtain from the website.
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: id
+          description: Sensor ID to return data when using op = viewSensor.
+          schema:
+            type: string
+        - in: query
+          name: name
+          description: Search hint to be used when using op = search.
+      responses:
+          'op = viewAll':
+            description: Returns all the sensors that are assigned to the requesting user account.
+            content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    sensorID:
+                      type: string
+                      description: The sensor's id number.
+                    sensorName:
+                      type: string
+                      description: The sensor's name entered by the user.
+                    dateAdded:
+                      type: string
+                      description: The date that the sensor was assigned to the user's account.
+                    email:
+                      type: string
+                      description: Email address of the sensor's user.
+                    controllerID:
+                      type: string
+                      description: The controller's id number that the sensor is assigned to.
+                    timezone: 
+                      type: string
+                      description: Timezone of the location that the sensor is assigned to the user's account.
+                    onoff:
+                      type: boolean
+                      description: 1 if the sensor is turned on, 0 if it's off.
+                        
+          'op = viewSensor':
+            description: Returns all saved data for a given sensor ID number, that it is assigned to the requesting user.
+            content:
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    sensorID:
+                      type: string
+                      description: The sensor's id number.
+                    sensorName:
+                      type: string
+                      description: The sensor's name entered by the user.
+                    dateAdded:
+                      type: string
+                      description: The date that the sensor was assigned to the user's account.
+                    email:
+                      type: string
+                      description: Email address of the sensor's user.
+                    controllerID:
+                      type: string
+                      description: The controller's id number that the sensor is assigned to.
+                    timezone: 
+                      type: string
+                      description: Timezone of the location that the sensor is assigned to the user's account.
+                    onoff:
+                      type: boolean
+                      description: 1 if the sensor is turned on, 0 if it's off.
+                    
+                    
