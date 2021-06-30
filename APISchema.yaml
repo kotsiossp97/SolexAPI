@@ -1,0 +1,30 @@
+openapi: 3.0.0
+info:
+  title: Solex API
+  description: PID Tracking Tool for PV Systems.
+  version: 0.0.1
+  
+servers:
+  - url: http://pid.michalisflorides.com/SolexAPI/queries
+    description: Main server
+paths:
+  /user.php:
+    post:
+      summary: User account and details related queries.
+      parameters:
+          -   in: query
+              name: op
+              required: true
+              schema:
+                  type: string
+                  enum:
+                      - email
+                      - name
+                      - surname
+                      - fullname
+                  description:
+                      - email - Returns the email of the requesting account.
+                      - name - Returns the name of the requesting account.
+        responses:
+            '200':
+                description: OK
