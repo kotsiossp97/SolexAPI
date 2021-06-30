@@ -3,26 +3,23 @@ info:
   title: Solex API
   description: PID Tracking Tool for PV Systems.
   version: 0.0.1
-  
+  contact:
+    name: Konstantinos Andreou
+    email: kandre11@ucy.ac.cy
+    url: http://pid.michalisflorides.com
 servers:
   - url: http://pid.michalisflorides.com/SolexAPI/queries
     description: Main server
+
 paths:
-  /user.php:
+# -------------------------------------------------------------------- 
+# USERS QUERIES 
+  /user.php?op=email:
     post:
-      summary: User account/ user details related queries.
+      summary: Returns the email address of the requesting user.
+      tags:
+        - Users
       parameters:
-        - in: query
-          name: op
-          description: Operation code to be executed.
-          required: true
-          schema:
-              type: string
-              enum: 
-                - email
-                - name
-                - surname
-                - fullname
         - in: query
           name: access_token
           required: true
@@ -30,27 +27,195 @@ paths:
             type: string
             description: Unique access token that can be obtain from the website.
       responses:
-          'op = email':
-              description: Returns the email address of the requesting user.
-              content:
-                application/json:
-                  properties:
-                    
-              
-  /sensors.php:
+        '200':
+          description: Operation Executed Successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  email:
+                    type: string
+                    description: Email Address
+
+  /user.php?op=name:
     post:
-      summary: Sensor related queries.
+      summary: Returns the first name of the requesting user.
+      tags:
+        - Users
       parameters:
         - in: query
-          name: op
-          description: Operation code to be executed.
+          name: access_token
           required: true
           schema:
-              type: string
-              enum: 
-                - viewAll
-                - viewSensor
-                - search
+            type: string
+            description: Unique access token that can be obtain from the website.
+      responses:
+        '200':
+          description: Operation Executed Successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: Account Name
+        '401':
+          description: Unauthorized
+          
+  /user.php?op=surname:
+    post:
+      summary: Returns the surname of the requesting user.
+      tags:
+        - Users
+      parameters:
+        - in: query
+          name: access_token
+          required: true
+          schema:
+            type: string
+            description: Unique access token that can be obtain from the website.
+      responses:
+        '200':
+          description: Operation Executed Successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  surname:
+                    type: string
+                    description: Account Surname
+        '401':
+          description: Unauthorized
+          
+  /user.php?op=fullname:
+    post:
+      summary: Returns the full name of the requesting user.
+      tags:
+        - Users
+      parameters:
+        - in: query
+          name: access_token
+          required: true
+          schema:
+            type: string
+            description: Unique access token that can be obtain from the website.
+      responses:
+        '200':
+          description: Operation Executed Successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  fullname:
+                    type: string
+                    description: Account Name
+        '401':
+          description: Unauthorized
+#-----------------------------------------------------------------          
+# SENSORS QUERIES 
+  /sensors.php?op=viewAll:
+    post:
+      summary: Returns all the sensors that are assigned to the requesting user account.
+      tags:
+        - Sensors
+      parameters:
+        - in: query
+          name: access_token
+          required: true
+          schema:
+            type: string
+            description: Unique access token that can be obtain from the website.
+      responses:
+        '200':
+          description: Operation Executed Successfully.
+          content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    sensorID:
+                      type: string
+                      description: The sensor's id number.
+                    sensorName:
+                      type: string
+                      description: The sensor's name entered by the user.
+                    dateAdded:
+                      type: string
+                      description: The date that the sensor was assigned to the user's account.
+                    email:
+                      type: string
+                      description: Email address of the sensor's user.
+                    controllerID:
+                      type: string
+                      description: The controller's id number that the sensor is assigned to.
+                    timezone: 
+                      type: string
+                      description: Timezone of the location that the sensor is assigned to the user's account.
+                    onoff:
+                      type: boolean
+                      description: 1 if the sensor is turned on, 0 if it's off.
+        '401':
+          description: Unauthorized
+  /sensors.php?op=viewSensor:
+    post:
+      summary: Returns all saved data for a given sensor ID number, that it is assigned to the requesting user.
+      tags:
+        - Sensors
+      parameters:
+        - in: query
+          name: access_token
+          required: true
+          schema:
+            type: string
+            description: Unique access token that can be obtain from the website.
+        - in: query
+          name: id
+          required: true
+          schema:
+            type: string
+            description: Sensor ID to request data.
+      responses:
+        '200':
+          description: Operation Executed Successfully.
+          content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    sensorID:
+                      type: string
+                      description: The sensor's id number.
+                    sensorName:
+                      type: string
+                      description: The sensor's name entered by the user.
+                    dateAdded:
+                      type: string
+                      description: The date that the sensor was assigned to the user's account.
+                    email:
+                      type: string
+                      description: Email address of the sensor's user.
+                    controllerID:
+                      type: string
+                      description: The controller's id number that the sensor is assigned to.
+                    timezone: 
+                      type: string
+                      description: Timezone of the location that the sensor is assigned to the user's account.
+                    onoff:
+                      type: boolean
+                      description: 1 if the sensor is turned on, 0 if it's off.
+        '401':
+          description: Unauthorized
+          
+  /sensors.php?op=search:
+    post:
+      summary: Returns data for an assigned sensor, searching the name of it using a hint passed as a parameter.
+      tags:
+        -  Sensors
+      parameters:
         - in: query
           name: access_token
           description: Unique access token that can be obtain from the website.
@@ -58,17 +223,13 @@ paths:
           schema:
             type: string
         - in: query
-          name: id
-          description: Sensor ID to return data when using op = viewSensor.
-          schema:
-            type: string
-        - in: query
+          required: true
           name: name
           description: Search hint to be used when using op = search.
       responses:
-          'op = viewAll':
-            description: Returns all the sensors that are assigned to the requesting user account.
-            content: 
+        '200':
+          description: Operation Executed Successfully.
+          content: 
               application/json:
                 schema:
                   type: object
@@ -94,34 +255,5 @@ paths:
                     onoff:
                       type: boolean
                       description: 1 if the sensor is turned on, 0 if it's off.
-                        
-          'op = viewSensor':
-            description: Returns all saved data for a given sensor ID number, that it is assigned to the requesting user.
-            content:
-              application/json:
-                schema:
-                  type: object
-                  properties:
-                    sensorID:
-                      type: string
-                      description: The sensor's id number.
-                    sensorName:
-                      type: string
-                      description: The sensor's name entered by the user.
-                    dateAdded:
-                      type: string
-                      description: The date that the sensor was assigned to the user's account.
-                    email:
-                      type: string
-                      description: Email address of the sensor's user.
-                    controllerID:
-                      type: string
-                      description: The controller's id number that the sensor is assigned to.
-                    timezone: 
-                      type: string
-                      description: Timezone of the location that the sensor is assigned to the user's account.
-                    onoff:
-                      type: boolean
-                      description: 1 if the sensor is turned on, 0 if it's off.
-                    
-                    
+        '401':
+          description: Unauthorized
