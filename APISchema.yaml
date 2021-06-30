@@ -225,7 +225,9 @@ paths:
         - in: query
           required: true
           name: name
-          description: Search hint to be used when using op = search.
+          schema:
+            type: string
+          description: Search hint to be used.
       responses:
         '200':
           description: Operation Executed Successfully.
