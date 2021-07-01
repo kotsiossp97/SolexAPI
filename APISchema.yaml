@@ -11,7 +11,7 @@ info:
     url: http://pid.michalisflorides.com
 servers:
   - url: http://pid.michalisflorides.com/SolexAPI/queries
-    description: Main server
+    description: Main serverasfdgadf
 
 paths:
   # --------------------------------------------------------------------
