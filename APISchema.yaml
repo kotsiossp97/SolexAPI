@@ -264,7 +264,7 @@ paths:
                       description: 1 if the sensor is turned on, 0 if it's off.
         '401':
           description: Unauthorized
-
+#----------------------------------------------------------------------------------------------------------
 # CONTROLLERS QUERIES
   /controllers.php?op=viewAll:
     post:
@@ -333,5 +333,39 @@ paths:
                     dateAdded:
                       type: integer
                       description: The date that the controller was assigned to the user's account (Unix Timestamp).
+        '401':
+          description: Unauthorized
+#-----------------------------------------------------------------          
+# DATA REQUEST QUERIES 
+
+  /data.php?op=viewAll:
+    post:
+      summary: Returns all the data that are available for the sensors that are assigned to the requesting account.
+      tags:
+        - Data
+      parameters:
+        - in: query
+          name: access_token
+          description: Unique access token that can be obtain from the website.
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Operation Executed Successfully.
+          content: 
+              application/json:
+                schema:
+                  type: object
+                  properties:
+                    date:
+                      type: integer
+                      description: The controllers's id number.
+                    sensorID:
+                      type: string
+                      description: The controllers's name entered by the user.
+                    meas:
+                      type: number
+                      description: The actual value of the measurement
         '401':
           description: Unauthorized
