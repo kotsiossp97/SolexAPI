@@ -6,4 +6,4 @@
 * The definition file is used to generate an analytic documentation site for the API: http://pid.michalisflorides.com/SolexAPI/docs/index.html
 
 
-> ©Konstantinos Andreou, 2021
+**©Konstantinos Andreou, 2021**
