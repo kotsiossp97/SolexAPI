@@ -14,7 +14,7 @@ servers:
 paths:
 # -------------------------------------------------------------------- 
 # USERS QUERIES 
-  /user.php?op=email:
+  /users.php?op=email:
     post:
       summary: Returns the email address of the requesting user.
       tags:
@@ -38,7 +38,7 @@ paths:
                     type: string
                     description: Email Address
 
-  /user.php?op=name:
+  /users.php?op=name:
     post:
       summary: Returns the first name of the requesting user.
       tags:
@@ -64,7 +64,7 @@ paths:
         '401':
           description: Unauthorized
           
-  /user.php?op=surname:
+  /users.php?op=surname:
     post:
       summary: Returns the surname of the requesting user.
       tags:
@@ -90,7 +90,7 @@ paths:
         '401':
           description: Unauthorized
           
-  /user.php?op=fullname:
+  /users.php?op=fullname:
     post:
       summary: Returns the full name of the requesting user.
       tags:
