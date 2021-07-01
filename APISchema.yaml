@@ -1,7 +1,10 @@
 openapi: 3.0.0
 info:
   title: Solex API
-  description: PID Tracking Tool for PV Systems.
+  description: 
+    PID Tracking Tool for PV Systems.
+    The API can be accessed by a registered user in platform's website, http://pid.michalisflorides.com
+    In the page you should navigate to the API Access Registration, and generate an Access Token.
   version: 0.0.1
   contact:
     name: Konstantinos Andreou
