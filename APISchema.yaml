@@ -6,6 +6,7 @@ info:
     The API can be accessed by a registered user in platform's website.<br/>
     In the page you should navigate to the API Access Registration, and generate an Access Token.
   externalDocs:
+    description: Register through the website to obtain an access token.
     url: http://pid.michalisflorides.com
   version: 0.0.1
   contact:
