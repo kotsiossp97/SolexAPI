@@ -3,7 +3,7 @@ info:
   title: Solex API
   description: 
     PID Tracking Tool for PV Systems.
-    The API can be accessed by a registered user in platform's website, <a>http://pid.michalisflorides.com</a>.<br/>
+    The API can be accessed by a registered user in platform's website, <a href="http://pid.michalisflorides.com"></a>.<br/>
     In the page you should navigate to the API Access Registration, and generate an Access Token.
   version: 0.0.1
   contact:
