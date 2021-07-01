@@ -4,8 +4,12 @@ info:
   description: PID Tracking Tool for PV Systems.
   version: 0.0.1
   contact:
-    name: Konstantinos Andreou
-    email: kandre11@ucy.ac.cy
+    name: 
+      - Konstantinos Andreou
+      - Michalis Florides
+    email: 
+      - kandre11@ucy.ac.cy
+      - florides.michalis@ucy.ac.cy
     url: http://pid.michalisflorides.com
 servers:
   - url: http://pid.michalisflorides.com/SolexAPI/queries
