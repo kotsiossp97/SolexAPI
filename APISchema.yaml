@@ -72,7 +72,25 @@ paths:
                     description: Email Address
         "401":
           description: Unauthorized
-
+  /users.php?op=setName:
+    put:
+      summary: Updates the requesting user's First Name.
+      tags:
+        - Users
+        - Write
+      parameters:
+        - in: query
+          name: access_token
+          required: true
+          schema:
+            type: string
+            description: Unique access token that can be obtain from the website.
+        - in: query
+          name: surname
+          required: true
+          schema:
+            type: string
+            description: Surname
   /users.php?op=name:
     post:
       summary: Returns the first name of the requesting user.
