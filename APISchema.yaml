@@ -47,6 +47,7 @@ paths:
                     description: Email Address
         "401":
           description: Unauthorized
+
   /users.php?op=email:
     post:
       summary: Returns the email address of the requesting user.
@@ -72,6 +73,7 @@ paths:
                     description: Email Address
         "401":
           description: Unauthorized
+
   /users.php?op=setName:
     put:
       summary: Updates the requesting user's First Name.
@@ -90,6 +92,18 @@ paths:
           schema:
             type: string
             description: First Name
+    responses:
+      "200":
+        description: Operation Executed Successfully.
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                success:
+                  type: boolean
+                operation:
+                  type: string
   /users.php?op=name:
     post:
       summary: Returns the first name of the requesting user.
@@ -142,6 +156,7 @@ paths:
                   type: string
       "401":
         description: Unauthorized
+
   /users.php?op=setSurname:
     put:
       summary: Updates the requesting user's Surname.
@@ -160,19 +175,19 @@ paths:
           schema:
             type: string
             description: Surname
-    responses:
-      "200":
-        description: Operation Executed Successfully.
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                success:
-                  type: boolean
-                operation:
-                  type: string
-                  
+      responses:
+        "200":
+          description: Operation Executed Successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  operation:
+                    type: string
+
   /users.php?op=fullname:
     post:
       summary: Returns the full name of the requesting user.
