@@ -190,8 +190,12 @@ paths:
                 properties:
                   success:
                     type: boolean
+                    description: Success/Failure
                   operation:
                     type: string
+                    description: Type of operation.
+        "401":
+          description: Unauthorized
 
   /users.php?op=fullname:
     post:
