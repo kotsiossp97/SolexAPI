@@ -394,7 +394,7 @@ paths:
         - in: query
           name: tz
           description: Timezone of the location of the sensor in TZ format (eg. Europe/Athens)
-          required: turned
+          required: true
           schema:
             type: string
         - in: query
