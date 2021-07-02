@@ -85,11 +85,11 @@ paths:
             type: string
             description: Unique access token that can be obtain from the website.
         - in: query
-          name: surname
+          name: name
           required: true
           schema:
             type: string
-            description: Surname
+            description: First Name
   /users.php?op=name:
     post:
       summary: Returns the first name of the requesting user.
@@ -141,7 +141,24 @@ paths:
                     description: Account Surname
         "401":
           description: Unauthorized
-
+  /users.php?op=setSurname:
+    put:
+      summary: Updates the requesting user's Surname.
+      tags:
+        - Users / Write
+      parameters:
+        - in: query
+          name: access_token
+          required: true
+          schema:
+            type: string
+            description: Unique access token that can be obtain from the website.
+        - in: query
+          name: surname
+          required: true
+          schema:
+            type: string
+            description: Surname
   /users.php?op=fullname:
     post:
       summary: Returns the full name of the requesting user.
