@@ -401,8 +401,25 @@ paths:
           name: name
           description: Desired identification name of the sensor.
           required: true
-          schema: 
+          schema:
             type: string
+      responses:
+        "200":
+          description: Operation Executed Successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    description: Success/Failure
+                  operation:
+                    type: string
+                    description: Type of operation.
+        "401":
+          description: Unauthorized
+
   #----------------------------------------------------------------------------------------------------------
   # CONTROLLERS QUERIES
   /controllers.php?op=viewAll:
