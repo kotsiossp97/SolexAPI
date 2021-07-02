@@ -16,6 +16,37 @@ servers:
 paths:
   # --------------------------------------------------------------------
   # USERS QUERIES
+  /users.php?op=details:
+    post:
+      summary: Returns all the available details of the requesting account.
+      tags:
+        - Users
+      parameters:
+        - in: query
+          name: access_token
+          required: true
+          schema:
+            type: string
+            description: Unique access token that can be obtain from the website.
+      responses:
+        "200":
+          description: Operation Executed Successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                    description: First Name
+                  surname:
+                    type: string
+                    description: Surname
+                  email:
+                    type: string
+                    description: Email Address
+        "401":
+          description: Unauthorized
   /users.php?op=email:
     post:
       summary: Returns the email address of the requesting user.
