@@ -104,6 +104,9 @@ paths:
                     type: boolean
                   operation:
                     type: string
+        "401":
+          description: Unauthorized
+
   /users.php?op=name:
     post:
       summary: Returns the first name of the requesting user.
