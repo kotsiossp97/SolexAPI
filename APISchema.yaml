@@ -78,7 +78,7 @@ paths:
     put:
       summary: Updates the requesting user's First Name.
       tags:
-        - Users - Write
+        - Users
       parameters:
         - in: query
           name: access_token
@@ -166,7 +166,7 @@ paths:
     put:
       summary: Updates the requesting user's Surname.
       tags:
-        - Users - Write
+        - Users
       parameters:
         - in: query
           name: access_token
@@ -366,6 +366,43 @@ paths:
                     description: 1 if the sensor is turned on, 0 if it's off.
         "401":
           description: Unauthorized
+  #----------------------------------------------------------------------------------------------------------
+  /sensors.php?op=add:
+    put:
+      summary: Assigns a sensor to the user's account.
+      tags:
+        - Sensors
+      parameters:
+        - in: query
+          name: access_token
+          description: Unique access token that can be obtain from the website.
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: sid
+          description: Sensor's ID number to be assigned.
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: cid
+          description: Controller's ID number, that the sensor will be attached to.
+          required: true
+          schema:
+            type: string
+        - in: query
+          name: tz
+          description: Timezone of the location of the sensor in TZ format (eg. Europe/Athens)
+          required: turned
+          schema:
+            type: string
+        - in: query
+          name: name
+          description: Desired identification name of the sensor.
+          required: true
+          schema: 
+            type: string
   #----------------------------------------------------------------------------------------------------------
   # CONTROLLERS QUERIES
   /controllers.php?op=viewAll:
