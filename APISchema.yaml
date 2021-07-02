@@ -92,18 +92,18 @@ paths:
           schema:
             type: string
             description: First Name
-    responses:
-      "200":
-        description: Operation Executed Successfully.
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                success:
-                  type: boolean
-                operation:
-                  type: string
+      responses:
+        "200":
+          description: Operation Executed Successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  operation:
+                    type: string
   /users.php?op=name:
     post:
       summary: Returns the first name of the requesting user.
@@ -142,20 +142,20 @@ paths:
           schema:
             type: string
             description: Unique access token that can be obtain from the website.
-    responses:
-      "200":
-        description: Operation Executed Successfully.
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                success:
-                  type: boolean
-                operation:
-                  type: string
-      "401":
-        description: Unauthorized
+      responses:
+        "200":
+          description: Operation Executed Successfully.
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  operation:
+                    type: string
+        "401":
+          description: Unauthorized
 
   /users.php?op=setSurname:
     put:
