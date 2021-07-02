@@ -76,8 +76,7 @@ paths:
     put:
       summary: Updates the requesting user's First Name.
       tags:
-        - Users
-        - Write
+        - Users / Write
       parameters:
         - in: query
           name: access_token
