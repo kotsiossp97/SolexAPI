@@ -371,7 +371,7 @@ paths:
 
   /data.php?op=viewRange:
     post:
-      summary: Returns all the data that are between a given datetime range, given as request parameter.
+      summary: Returns all the data that are between a given datetime range as request parameters.
       tags:
         - Data
       parameters:
